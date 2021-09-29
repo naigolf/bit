@@ -3,6 +3,8 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser')
 
+var crypto = require('crypto');
+
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
@@ -27,7 +29,6 @@ var API_SECRET = "b"+SECRETkey
 
 //var access_token = 'Bearer {'+Token+'}'
 
-
 var servertime = API_HOST + '/api/servertime'
 var ts;
 request.get(servertime, function (error, response, body) {
@@ -43,15 +44,30 @@ request.get(servertime, function (error, response, body) {
 
 
 
+var signature;
+function sign(data){
+var j = JSON.parse(data);
+console.log('Signing payload: ' + JSON.parse(data))
+	
+var hmac = crypto.createHmac("sha256", API_SECRET )
+                 .update(j)
+                 .digest('base64')
+console.log('hmac' + hmac)
+return hmac
+}
+
+
+
+
 
 app.get('/buy/:sym/:amt', function (req, res) {
 
-let headers = {
+let header = {
         'Accept': 'application/json',
 	'Content-Type': 'application/json',
 	'X-BTK-APIKEY': API_KEY,
     }
-let body = {
+let data = {
 	 'sym': req.params.sym,
 	'amt': req.params.amt,  //THB amount you want to spend
 	'rat': 0,
@@ -59,11 +75,13 @@ let body = {
 	'ts': ts,
     }	
 
-    
+
+signature = sign(data);
+data = "sig " + signature
 request.post({
         url: API_HOST + '/api/market/place-bid/test',
-        headers: headers,
-        body: body
+        headers: header,
+        data: data
     })	
 	
 	
