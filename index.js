@@ -84,7 +84,7 @@ data = "sig " + signature
 request.post({
         url: API_HOST + '/api/market/place-bid/test',
         headers: header,
-        data: data
+        data: JSON.stringify(data)
     }, function (error, response, body){
     if (!error && response.statusCode == 200) {                      
       console.log('Payload :::: ' + body)
