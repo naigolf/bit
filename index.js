@@ -46,6 +46,28 @@ request.get(servertime, function (error, response, body) {
 
 app.get('/buy/:sym/:amt', function (req, res) {
 
+let headers = {
+        'Accept': 'application/json',
+	'Content-Type': 'application/json',
+	'X-BTK-APIKEY': API_KEY,
+    }
+let body = {
+	 'sym': req.params.sym,
+	'amt': req.params.amt,  //THB amount you want to spend
+	'rat': 0,
+	'typ': 'market',
+	'ts': ts,
+    }	
+
+    
+request.post({
+        url: API_HOST + '/api/market/place-bid/test',
+        headers: headers,
+        body: JSON.parse(body)
+    })	
+	
+	
+/*	
 var options = {
 url: API_HOST + '/api/market/place-bid/test',
 method: 'POST',
@@ -71,6 +93,11 @@ request(options, function (error, response, body) {
 res.end(body)	    
     }
 })
+
+*/
+
+
+
 
 })
 
