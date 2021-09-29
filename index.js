@@ -60,7 +60,7 @@ return hmac
 
 
 
-app.get('/buy/:sym/:amt', function (req, res) {
+app.get('/buy', function (req, res) {
 
 let header = {
         'Accept': 'application/json',
@@ -68,8 +68,8 @@ let header = {
 	'X-BTK-APIKEY': API_KEY,
     }
 let data = {
-	 'sym': req.params.sym,
-	'amt': req.params.amt,  //THB amount you want to spend
+	 'sym': 'THB_OMG',
+	'amt': 10,  //THB amount you want to spend
 	'rat': 0,
 	'typ': 'market',
 	'ts': ts,
