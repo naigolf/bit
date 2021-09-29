@@ -30,11 +30,13 @@ var API_SECRET = "b"+SECRETkey
 
 var servertime = API_HOST + '/api/servertime'
 var ts;
-request(servertime, function (error, response, body) {
+request.get(servertime, function (error, response, body) {
     if (!error && response.statusCode == 200) {                      
         //res.end(body.responses.text)
       ts = (body.responses)
       console.log('Server time: ' + body.response)
+            console.log('Server time: ' + ts)
+            console.log('Server time: ' + body)
     }
 })
 
