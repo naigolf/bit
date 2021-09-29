@@ -63,7 +63,7 @@ let body = {
 request.post({
         url: API_HOST + '/api/market/place-bid/test',
         headers: headers,
-        body: JSON.parse(body)
+        body: body
     })	
 	
 	
