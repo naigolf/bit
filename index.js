@@ -46,8 +46,8 @@ request.get(servertime, function (error, response, body) {
 
 var signature;
 function sign(data){
-var j = JSON.parse(data);
-console.log('Signing payload: ' + JSON.parse(data))
+var j = JSON.stringify(data);
+console.log('Signing payload: ' + JSON.stringify(data))
 	
 var hmac = crypto.createHmac("sha256", API_SECRET )
                  .update(j)
