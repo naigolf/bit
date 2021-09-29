@@ -39,3 +39,38 @@ request.get(servertime, function (error, response, body) {
     }
 })
 
+
+
+
+
+
+app.get('/buy/:sym/:amt', function (req, res) {
+
+var options = { 
+url: API_HOST + '/api/market/place-bid/test,
+method: 'POST',
+headers:{ 
+        'Accept': 'application/json',
+	'Content-Type': 'application/json',
+	'X-BTK-APIKEY': API_KEY,
+   },
+data:{ 
+        'sym': req.params.sym,
+	'amt': req.params.amt,  //THB amount you want to spend
+	'rat': 0,
+	'typ': 'market',
+	'ts': ts,
+    }
+};
+		
+//res.end('ok')
+
+request(options, function (error, response, body) {
+    if (!error && response.statusCode == 200) {                      
+      console.log('Payload :::: ' + body)
+    }
+}
+
+})
+
+
