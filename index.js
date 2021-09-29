@@ -32,7 +32,7 @@ var servertime = API_HOST + '/api/servertime'
 var ts;
 request(servertime, function (error, response, body) {
     if (!error && response.statusCode == 200) {                      
-        res.end(body.responses.text)
+        //res.end(body.responses.text)
       ts = int(body.responses.text)
       console.log('Server time: ' + body.response.text)
     }
