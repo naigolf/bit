@@ -47,14 +47,14 @@ request.get(servertime, function (error, response, body) {
 app.get('/buy/:sym/:amt', function (req, res) {
 
 var options = { 
-url: API_HOST + '/api/market/place-bid/test,
+url: API_HOST + '/api/market/place-bid/test',
 method: 'POST',
-headers:{ 
+headers: { 
         'Accept': 'application/json',
 	'Content-Type': 'application/json',
 	'X-BTK-APIKEY': API_KEY,
    },
-data:{ 
+data: { 
         'sym': req.params.sym,
 	'amt': req.params.amt,  //THB amount you want to spend
 	'rat': 0,
