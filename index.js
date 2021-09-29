@@ -52,8 +52,8 @@ console.log('Signing payload: ' + JSON.stringify(data))
 var hmac = crypto.createHmac("sha256", API_SECRET )
                  .update(j)
                  .digest('base64')
-console.log('hmac' + hmac)
-return hmac
+console.log('hmac  ::' + hmac)
+return hmac()
 }
 
 
@@ -77,6 +77,9 @@ let data = {
 
 
 signature = sign(data);
+	
+console.log('signature   : ' + signature)	
+	
 data = "sig " + signature
 request.post({
         url: API_HOST + '/api/market/place-bid/test',
