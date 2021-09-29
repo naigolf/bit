@@ -53,7 +53,7 @@ var hmac = crypto.createHmac("sha256", API_SECRET )
                  .update(j)
                  .digest('base64')
 console.log('hmac  ::' + hmac)
-return hmac()
+return hmac
 }
 
 
