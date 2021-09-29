@@ -63,13 +63,14 @@ data: {
     }
 };
 		
-//res.end('ok')
+
 
 request(options, function (error, response, body) {
     if (!error && response.statusCode == 200) {                      
       console.log('Payload :::: ' + body)
+res.end(body)	    
     }
-}
+})
 
 })
 
