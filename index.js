@@ -54,13 +54,13 @@ headers: {
 	'Content-Type': 'application/json',
 	'X-BTK-APIKEY': API_KEY,
    },
-data: JSON.stringify{ 
+data: JSON.stringify({ 
         'sym': req.params.sym,
 	'amt': req.params.amt,  //THB amount you want to spend
 	'rat': 0,
 	'typ': 'market',
 	'ts': ts,
-    }
+    })
 };
 		
 
