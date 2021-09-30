@@ -83,7 +83,7 @@ let data = {
     }	
 
 
-signature = sign(data);
+signature = sign(data,ts);
 data = signature
 	
 console.log('signature   : ' + signature)	
