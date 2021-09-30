@@ -57,10 +57,6 @@ console.log('hmac  ::' + hmac)
 return hmac
 }
 
-
-
-
-
 app.get('/buy', function (req, res) {
 
 let header = {
@@ -76,13 +72,11 @@ let data = {
 	'ts': ts,
     }	
 
-
 signature = sign(data);
 data = {"sig" : signature}
 	
 console.log('Payload with signature: ' + JSON.stringify(data))	
 	
-
 request.post({
         url: API_HOST + '/api/market/place-bid/test',
         headers: header,
@@ -94,10 +88,6 @@ res.end(body)
     }
 }
 )	
-
-
-
-
 
 })
 
