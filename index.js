@@ -40,10 +40,10 @@ var signature;
 
 function separators(data){
 var uu = {"amt":10,
-	  "rat":260000,
-	  "sym":"THB_BTC",
+	  "rat":0,
+	  "sym":"THB_OMG",
 	  "ts":ts,
-	  "typ":"limit"
+	  "typ":"market"
 	 }
 return 	uu
 }
@@ -72,8 +72,7 @@ request.get(servertime, function (error, response, body) {
         //res.end(body.responses.text)
       ts = (body)
       console.log('Server time: ' + ts)
-    }
-})	
+    
 /////////////////////////
 	
 
@@ -96,7 +95,12 @@ signature = sign(data);
 data = {'sig' : signature}
 	
 console.log('Payload with signature: ' + JSON.stringify(data))	
+
+	    
+}
+})	
 	
+	    
 request.post({
         url: API_HOST + '/api/market/place-bid/test',
         headers: header,
