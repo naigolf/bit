@@ -40,7 +40,6 @@ var signature;
 
 function separators(data){
 var uu = {"amt":10,"rat":0,"sym":"THB_OMG","ts":ts,"typ":"market"}
-console.log('uu :' + JSON.stringify(uu))
 return 	uu
 }
 
@@ -52,7 +51,6 @@ console.log('Signing payload: ' + JSON.stringify(j))
 var hmac = crypto.createHmac('sha256', API_SECRET )
                  .update(JSON.stringify(j))
                  .digest('hex')
-console.log('j :' + JSON.stringify(j))
 console.log('hmac :' + hmac)
 return hmac
 }
@@ -97,6 +95,8 @@ let data = {
 signature = sign(data);
 //data = {'sig' : signature}
 data['sig'] = signature
+	    
+console.log('data === ' + JSON.stringify(signature))
 	
 console.log('Payload with signature: ' + JSON.stringify(data))	
 
@@ -107,7 +107,7 @@ console.log('Payload with signature: ' + JSON.stringify(data))
 request.post({
         url: API_HOST + '/api/market/place-bid/test',
         headers: header,
-        data: JSON.stringify(data)
+        data: data
     }, function (error, response, body){
     if (!error && response.statusCode == 200) {                      
       console.log('Response: ' + body)
