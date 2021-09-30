@@ -49,9 +49,9 @@ function sign(data){
 var j = JSON.stringify(data);
 console.log('Signing payload: ' + JSON.stringify(data))
 	
-var hmac = crypto.createHmac("sha256", API_SECRET )
+var hmac = crypto.createHmac('sha256', API_SECRET )
                  .update(j)
-                 .digest('base64')
+                 .digest('hex')
 console.log('hmac  ::' + hmac)
 return hmac
 }
