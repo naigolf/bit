@@ -55,7 +55,12 @@ var hmac = crypto.createHmac('sha256', API_SECRET )
                  .update(JSON.stringify(j))
                  .digest('hex')
 console.log('hmac  ::' + hmac)
-return hmac
+
+	var bb = {
+		"sig" : hmac,
+		"ts" : JSON.stringify(j)
+	}
+return bb
 }
 
 
@@ -78,11 +83,12 @@ let data = {
     }	
 
 
-signature = sign(data,ts);
+signature = sign(data);
+data = signature
 	
 console.log('signature   : ' + signature)	
 	
-data = "sig " + signature
+
 request.post({
         url: API_HOST + '/api/market/place-bid/test',
         headers: header,
