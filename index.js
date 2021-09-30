@@ -38,20 +38,22 @@ var ts;
 var signature;
 
 
-function separators(data,ts){
+function separators(data){
 var uu = {"amt":10,"rat":0,"sym":"THB_OMG","ts":ts,"typ":"market"}
+console.log('uu :' + uu)
 return 	uu
 }
 
-function sign(data,ts){
-var j = separators(data,ts);
+function sign(data){
+var j = separators(data);
 	
 console.log('Signing payload: ' + JSON.stringify(j))
 
 var hmac = crypto.createHmac('sha256', API_SECRET )
                  .update(JSON.stringify(j))
                  .digest('hex')
-//console.log('hmac :' + hmac)
+console.log('j :' + j)
+console.log('hmac :' + hmac)
 return hmac
 }
 
@@ -92,7 +94,7 @@ let data = {
 
 //console.log('data === ' + JSON.stringify(data))
 
-signature = sign(data,ts);
+signature = sign(data);
 //data = {'sig' : signature}
 data['sig'] = signature
 	
