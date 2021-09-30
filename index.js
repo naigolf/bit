@@ -44,14 +44,20 @@ request.get(servertime, function (error, response, body) {
 var signature;
 
 
-function separators(data,ts){
-var uu = {"amt":10,"rat":260000,"sym":"THB_BTC","ts":ts,"typ":"limit"}
+function separators(data){
+var uu = {"amt":10,
+	  "rat":260000,
+	  "sym":"THB_BTC",
+	  "ts":ts,
+	  "typ":"limit"
+	 }
 return 	uu
 }
 
-function sign(data,ts){
-var j = separators(data,ts);
+function sign(data){
+var j = separators(data);
 console.log('Signing payload: ' + j)
+	console.log('Signing payload 2222 : ' + JSON.stringify(j))
 var hmac = crypto.createHmac('sha256', API_SECRET )
                  .update(j)
                  .digest('hex')
@@ -74,7 +80,7 @@ let data = {
 	'ts': ts,
     }	
 
-signature = sign(data,ts);
+signature = sign(data);
 data = {"sig" : signature}
 	
 console.log('Payload with signature: ' + JSON.stringify(data))	
