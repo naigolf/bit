@@ -49,10 +49,10 @@ function sign(data,ts){
 var j = {
 "ts" : ts	
 }
-console.log('Signing payload: ' + j)
+console.log('Signing payload: ' + JSON.stringify(j))
 	
 var hmac = crypto.createHmac('sha256', API_SECRET )
-                 .update(ts)
+                 .update(JSON.stringify(json))
                  .digest('hex')
 console.log('hmac  ::' + hmac)
 return hmac
