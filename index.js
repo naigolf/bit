@@ -29,18 +29,20 @@ var API_SECRET = "b"+SECRETkey
 
 //var access_token = 'Bearer {'+Token+'}'
 
-var servertime = API_HOST + '/api/servertime'
+
 var ts;
+
+function servertime(){
+var servertime = API_HOST + '/api/servertime'
 request.get(servertime, function (error, response, body) {
     if (!error && response.statusCode == 200) {                      
         //res.end(body.responses.text)
       ts = (body)
       console.log('Server time: ' + ts)
-
+return ts
     }
 })
-
-
+}
 
 
 
@@ -72,7 +74,7 @@ let data = {
 	'amt': 10,  //THB amount you want to spend
 	'rat': 0,
 	'typ': 'market',
-	'ts': ts,
+	'ts': servertime,
     }	
 
 
