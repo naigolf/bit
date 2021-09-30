@@ -34,7 +34,7 @@ var API_SECRET = "b"+SECRETkey
 	
 	
 
-	
+var ts;	
 var signature;
 
 
@@ -61,19 +61,25 @@ return hmac
 }
 
 
-//////////////////////////////////////////////////////	
 
-app.get('/buy', function (req, res) {
-	
-var ts;
+function chackTime(){
 var servertime = API_HOST + '/api/servertime'
 request.get(servertime, function (error, response, body) {
     if (!error && response.statusCode == 200) {                      
         //res.end(body.responses.text)
       ts = (body)
       console.log('Server time: ' + ts)
+	   // return ts
 }
-})    
+})   
+}	
+
+//////////////////////////////////////////////////////	
+
+app.get('/buy', function (req, res) {
+	
+chackTime();
+ 
 /////////////////////////
 	
 
