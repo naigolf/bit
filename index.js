@@ -57,7 +57,14 @@ return hmac
 
 
 
-function chackTime(){
+
+ 
+	
+
+//////////////////////////////////////////////////////	
+
+app.get('/buy', function (req, res) {
+	
 var servertime = API_HOST + '/api/servertime'
 request.get(servertime, function (error, response, body) {
     if (!error && response.statusCode == 200) {                      
@@ -65,15 +72,7 @@ request.get(servertime, function (error, response, body) {
       ts = (body)
       console.log('Server time: ' + ts)
 	   // return ts
-}
-})   
-}	
 
-//////////////////////////////////////////////////////	
-
-app.get('/buy', function (req, res) {
-	
-chackTime();
  
 /////////////////////////
 	
@@ -114,6 +113,14 @@ res.end(body)
 }
 )	
 
+	    
+///////////////////	    
+}
+})  	    
+//////////////////	    
+	    
+	    
+	    
 })
 
 
