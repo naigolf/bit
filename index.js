@@ -32,20 +32,17 @@ var API_SECRET = "b"+SECRETkey
 
 var ts;
 
-function time(){
-var ttt;	
 var servertime = API_HOST + '/api/servertime'
 request.get(servertime, function (error, response, body) {
     if (!error && response.statusCode == 200) {                      
         //res.end(body.responses.text)
-      ttt = (body)
+      ts = (body)
       console.log('Server time: ' + ttt)
     }
 })
-ts = ttt	
-return 	ts	
 	
-}
+	
+
 	
 var signature;
 
@@ -88,7 +85,7 @@ let data = {
     }	
 
 signature = sign(data);
-data = {"sig" : signature}
+data = {'sig' : signature}
 	
 console.log('Payload with signature: ' + JSON.stringify(data))	
 	
