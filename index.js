@@ -47,7 +47,7 @@ function sign(data){
 	
 var j = JSON.stringify(data)
 
-console.log('Signing payload: ' + JSON.stringify(j))
+console.log('Signing payload: ' + j)
 	
 var hmac = crypto.createHmac('sha256', API_SECRET )
                  .update(j)
@@ -78,7 +78,7 @@ let data = {
 
 
 signature = sign(data);
-data = "sig" + signature
+data = {"sig" : signature}
 	
 console.log('Payload with signature: ' + JSON.stringify(data))	
 	
