@@ -56,10 +56,11 @@ return 	uu
 
 function sign(data){
 var j = separators(data);
-console.log('Signing payload: ' + j)
-	console.log('Signing payload 2222 : ' + JSON.stringify(j))
+	
+console.log('Signing payload: ' + JSON.stringify(j))
+
 var hmac = crypto.createHmac('sha256', API_SECRET )
-                 .update(j)
+                 .update(JSON.stringify(j))
                  .digest('hex')
 console.log('hmac :' + hmac)
 return hmac
