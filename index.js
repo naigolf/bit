@@ -45,9 +45,13 @@ request.get(servertime, function (error, response, body) {
 
 
 var signature;
-function sign(data){
-var j = JSON.stringify(data);
-console.log('Signing payload: ' + JSON.stringify(data))
+function sign(data,ts){
+var j = {
+"ts" : ts	
+}
+
+JSON.stringify(j);
+console.log('Signing payload: ' + JSON.stringify(j))
 	
 var hmac = crypto.createHmac('sha256', API_SECRET )
                  .update(j)
@@ -92,36 +96,7 @@ res.end(body)
     }
 }
 )	
-	
-	
-/*	
-var options = {
-url: API_HOST + '/api/market/place-bid/test',
-method: 'POST',
-headers: { 
-        'Accept': 'application/json',
-	'Content-Type': 'application/json',
-	'X-BTK-APIKEY': API_KEY,
-   },
-data: JSON.stringify({ 
-        'sym': req.params.sym,
-	'amt': req.params.amt,  //THB amount you want to spend
-	'rat': 0,
-	'typ': 'market',
-	'ts': ts,
-    })
-};
-		
 
-
-request(options, function (error, response, body) {
-    if (!error && response.statusCode == 200) {                      
-      console.log('Payload :::: ' + body)
-res.end(body)	    
-    }
-})
-
-*/
 
 
 
