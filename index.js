@@ -86,7 +86,7 @@ let data = {
 signature = sign(data,ts);
 data = signature
 	
-console.log('signature   : ' + signature)	
+console.log('signature   : ' + JSON.stringify(signature))	
 	
 
 request.post({
