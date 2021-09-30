@@ -41,26 +41,20 @@ request.get(servertime, function (error, response, body) {
     }
 })
 
-
-
-
 var signature;
-function sign(data,ts){
-var j = {
-"ts" : ts	
-}
+
+function sign(data){
+	
+var j = JSON.stringify(data)
+
 console.log('Signing payload: ' + JSON.stringify(j))
 	
 var hmac = crypto.createHmac('sha256', API_SECRET )
-                 .update(JSON.stringify(j))
+                 .update(j)
                  .digest('hex')
 console.log('hmac  ::' + hmac)
 
-	var bb = {
-		"sig" : hmac,
-		"ts" : ts
-	}
-return bb
+return hmac
 }
 
 
@@ -83,10 +77,10 @@ let data = {
     }	
 
 
-signature = sign(data,ts);
-data = signature
+signature = sign(data);
+data = "sig" + signature
 	
-console.log('signature   : ' + JSON.stringify(signature))	
+console.log('Payload with signature: ' + JSON.stringify(data))	
 	
 
 request.post({
@@ -95,7 +89,7 @@ request.post({
         data: JSON.stringify(data)
     }, function (error, response, body){
     if (!error && response.statusCode == 200) {                      
-      console.log('Payload :::: ' + body)
+      console.log('Response: ' + body)
 res.end(body)	    
     }
 }
