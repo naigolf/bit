@@ -69,7 +69,7 @@ var servertime = API_HOST + '/api/servertime'
 request.get(servertime, function (error, response, body) {
     if (!error && response.statusCode == 200) {                      
         //res.end(body.responses.text)
-      ts = (body)
+      ts = parseInt(body)
       console.log('Server time: ' + ts)
 	   // return ts
 
