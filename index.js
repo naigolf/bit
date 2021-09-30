@@ -40,7 +40,7 @@ var signature;
 
 function separators(data){
 var uu = {"amt":10,"rat":0,"sym":"THB_OMG","ts":ts,"typ":"market"}
-console.log('uu :' + uu)
+console.log('uu :' + JSON.stringify(uu))
 return 	uu
 }
 
@@ -52,7 +52,7 @@ console.log('Signing payload: ' + JSON.stringify(j))
 var hmac = crypto.createHmac('sha256', API_SECRET )
                  .update(JSON.stringify(j))
                  .digest('hex')
-console.log('j :' + j)
+console.log('j :' + JSON.stringify(j))
 console.log('hmac :' + hmac)
 return hmac
 }
