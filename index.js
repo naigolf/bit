@@ -37,7 +37,7 @@ request.get(servertime, function (error, response, body) {
     if (!error && response.statusCode == 200) {                      
         //res.end(body.responses.text)
       ts = (body)
-      console.log('Server time: ' + ttt)
+      console.log('Server time: ' + ts)
     }
 })
 	
