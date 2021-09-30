@@ -58,7 +58,7 @@ console.log('hmac  ::' + hmac)
 
 	var bb = {
 		"sig" : hmac,
-		"ts" : j
+		"ts" : ts
 	}
 return bb
 }
