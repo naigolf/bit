@@ -52,7 +52,7 @@ var j = {
 console.log('Signing payload: ' + JSON.stringify(j))
 	
 var hmac = crypto.createHmac('sha256', API_SECRET )
-                 .update(JSON.stringify(json))
+                 .update(JSON.stringify(j))
                  .digest('hex')
 console.log('hmac  ::' + hmac)
 return hmac
