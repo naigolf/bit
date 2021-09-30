@@ -30,16 +30,7 @@ var API_SECRET = "b"+SECRETkey
 //var access_token = 'Bearer {'+Token+'}'
 
 
-var ts;
 
-var servertime = API_HOST + '/api/servertime'
-request.get(servertime, function (error, response, body) {
-    if (!error && response.statusCode == 200) {                      
-        //res.end(body.responses.text)
-      ts = (body)
-      console.log('Server time: ' + ts)
-    }
-})
 	
 	
 
@@ -69,7 +60,22 @@ console.log('hmac :' + hmac)
 return hmac
 }
 
+
+//////////////////////////////////////////////////////	
+
 app.get('/buy', function (req, res) {
+	
+var ts;
+var servertime = API_HOST + '/api/servertime'
+request.get(servertime, function (error, response, body) {
+    if (!error && response.statusCode == 200) {                      
+        //res.end(body.responses.text)
+      ts = (body)
+      console.log('Server time: ' + ts)
+    }
+})	
+/////////////////////////
+	
 
 let header = {
         'Accept': 'application/json',
@@ -83,6 +89,8 @@ let data = {
 	'typ': 'market',
 	'ts': ts,
     }	
+
+console.log('data === ' + JSON.stringify(data))
 
 signature = sign(data);
 data = {'sig' : signature}
