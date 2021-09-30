@@ -72,7 +72,8 @@ request.get(servertime, function (error, response, body) {
         //res.end(body.responses.text)
       ts = (body)
       console.log('Server time: ' + ts)
-    
+}
+})    
 /////////////////////////
 	
 
@@ -97,8 +98,7 @@ data = {'sig' : signature}
 console.log('Payload with signature: ' + JSON.stringify(data))	
 
 	    
-}
-})	
+	
 	
 	    
 request.post({
