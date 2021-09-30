@@ -43,17 +43,19 @@ request.get(servertime, function (error, response, body) {
 
 var signature;
 
-function sign(data){
-	
-var j = JSON.stringify(data)
 
+function separators(data,ts){
+var uu = {"amt":10,"rat":260000,"sym":"THB_BTC","ts":ts,"typ":"limit"}
+return 	uu
+}
+
+function sign(data,ts){
+var j = separators(data,ts);
 console.log('Signing payload: ' + j)
-	
 var hmac = crypto.createHmac('sha256', API_SECRET )
                  .update(j)
                  .digest('hex')
-console.log('hmac  ::' + hmac)
-
+console.log('hmac :' + hmac)
 return hmac
 }
 
@@ -65,14 +67,14 @@ let header = {
 	'X-BTK-APIKEY': API_KEY,
     }
 let data = {
-	 'sym': 'THB_OMG',
+	'sym': 'THB_OMG',
 	'amt': 10,  //THB amount you want to spend
 	'rat': 0,
 	'typ': 'market',
 	'ts': ts,
     }	
 
-signature = sign(data);
+signature = sign(data,ts);
 data = {"sig" : signature}
 	
 console.log('Payload with signature: ' + JSON.stringify(data))	
