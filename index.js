@@ -39,7 +39,12 @@ var signature;
 
 
 function separators(data){
-var uu = {"amt":10,"rat":0,"sym":"THB_OMG","ts":ts,"typ":"market"}
+var uu = {"amt":10,
+	  "rat":0,
+	  "sym":"THB_OMG",
+	  "ts":ts,
+	  "typ":"market"
+	 }
 return 	uu
 }
 
@@ -94,7 +99,18 @@ let data = {
 
 signature = sign(data);
 //data = {'sig' : signature}
-data['sig'] = signature
+data = {
+	"amt":10,
+	"rat":0,
+	"sig":signature,
+	"sym":"THB_OMG",
+	"ts":ts,
+	"typ":"market"
+	 }
+
+
+
+//['sig'] = signature
 	    
 console.log('data === ' + JSON.stringify(signature))
 	
