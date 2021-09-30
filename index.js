@@ -38,18 +38,13 @@ var ts;
 var signature;
 
 
-function separators(data){
-var uu = {"amt":10,
-	  "rat":0,
-	  "sym":"THB_OMG",
-	  "ts":ts,
-	  "typ":"market"
-	 }
+function separators(data,ts){
+var uu = {"amt":10,"rat":0,"sym":"THB_OMG","ts":ts,"typ":"market"}
 return 	uu
 }
 
-function sign(data){
-var j = separators(data);
+function sign(data,ts){
+var j = separators(data,ts);
 	
 console.log('Signing payload: ' + JSON.stringify(j))
 
@@ -98,7 +93,7 @@ let data = {
 
 console.log('data === ' + JSON.stringify(data))
 
-signature = sign(data);
+signature = sign(data,ts);
 data = {'sig' : signature}
 	
 console.log('Payload with signature: ' + JSON.stringify(data))	
