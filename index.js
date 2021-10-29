@@ -99,14 +99,6 @@ let data = {
 
 signature = sign(data);
 //data = {'sig' : signature}
-data = {
-	"amt":10,
-	"rat":0,
-	"sig":signature,
-	"sym":"THB_OMG",
-	"ts":ts,
-	"typ":"market"
-	 }
 
 
 
